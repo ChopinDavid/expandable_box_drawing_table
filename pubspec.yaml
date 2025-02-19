@@ -1,7 +1,7 @@
 name: expandable_box_drawing_table
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+repository: https://github.com/ChopinDavid/expandable_box_drawing_table
 
 environment:
   sdk: ^3.0.0
