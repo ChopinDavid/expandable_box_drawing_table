@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class ExpandableBoxDrawingTableConfiguration extends InheritedWidget {
@@ -24,7 +25,7 @@ class ExpandableBoxDrawingTableConfiguration extends InheritedWidget {
   }
 }
 
-class ExpandableBoxDrawingTableConfigurationData {
+class ExpandableBoxDrawingTableConfigurationData extends Equatable {
   const ExpandableBoxDrawingTableConfigurationData({
     required this.sectionsHaveCheckBoxes,
     required this.entriesHaveCheckBoxes,
@@ -59,4 +60,12 @@ class ExpandableBoxDrawingTableConfigurationData {
       collapsedIcon: collapsedIcon ?? this.collapsedIcon,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        sectionsHaveCheckBoxes,
+        entriesHaveCheckBoxes,
+        expandedIcon,
+        collapsedIcon,
+      ];
 }
