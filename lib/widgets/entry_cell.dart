@@ -11,12 +11,10 @@ class EntryCell<T> extends StatelessWidget {
   const EntryCell({
     super.key,
     required this.entry,
-    this.onTap,
     required this.depth,
     required this.isLastExerciseInList,
   });
   final Entry<T> entry;
-  final void Function({required bool selected, required T value})? onTap;
   final int depth;
   final bool isLastExerciseInList;
 
@@ -48,6 +46,7 @@ class EntryCell<T> extends StatelessWidget {
           ],
         );
         return SizedBox(
+          key: const Key('row'),
           height: 36.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +81,9 @@ class EntryCell<T> extends StatelessWidget {
           ),
         );
       } else {
-        return SizedBox.shrink();
+        return SizedBox.shrink(
+          key: const Key('empty-state'),
+        );
       }
     });
   }
