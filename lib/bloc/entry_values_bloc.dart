@@ -11,16 +11,18 @@ class EntryValuesBloc<T>
       : _entryValues = initialValues,
         super(EntryValuesUpdated<T>(initialValues)) {
     on<EntryValuesUpdateValuesSelectedEvent<T>>((event, emit) {
+      var newEntryValues = List.of(_entryValues);
       for (var entryValue in event.entryValues) {
-        if (_entryValues.contains(entryValue) && !event.selected) {
-          _entryValues.remove(entryValue);
-        } else if (!_entryValues.contains(entryValue) && event.selected) {
-          _entryValues.add(entryValue);
+        if (newEntryValues.contains(entryValue) && !event.selected) {
+          newEntryValues.remove(entryValue);
+        } else if (!newEntryValues.contains(entryValue) && event.selected) {
+          newEntryValues.add(entryValue);
         }
       }
+      _entryValues = newEntryValues;
       emit(EntryValuesUpdated(_entryValues));
     });
   }
 
-  final List<T> _entryValues;
+  List<T> _entryValues;
 }
