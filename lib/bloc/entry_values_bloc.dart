@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 part 'entry_values_event.dart';
@@ -21,5 +22,5 @@ class EntryValuesBloc<T>
     });
   }
 
-  List<T> _entryValues;
+  final List<T> _entryValues;
 }

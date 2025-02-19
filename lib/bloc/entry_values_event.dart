@@ -1,7 +1,7 @@
 part of 'entry_values_bloc.dart';
 
 @immutable
-sealed class EntryValuesEvent<T> {}
+sealed class EntryValuesEvent<T> extends Equatable {}
 
 class EntryValuesUpdateValuesSelectedEvent<T> extends EntryValuesEvent<T> {
   EntryValuesUpdateValuesSelectedEvent(
@@ -10,4 +10,7 @@ class EntryValuesUpdateValuesSelectedEvent<T> extends EntryValuesEvent<T> {
   });
   final List<T> entryValues;
   final bool selected;
+
+  @override
+  List<Object?> get props => [entryValues, selected];
 }
