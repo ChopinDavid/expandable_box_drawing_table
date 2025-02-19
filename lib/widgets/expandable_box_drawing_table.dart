@@ -7,25 +7,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'section_widget.dart';
 
 class ExpandableBoxDrawingTable<T> extends StatelessWidget {
-  const ExpandableBoxDrawingTable({
+  ExpandableBoxDrawingTable({
     super.key,
     required this.initialValues,
     this.configuration =
         const ExpandableBoxDrawingTableConfigurationData.defaultConfiguration(),
     required this.sections,
     this.onValuesChanged,
-  });
+    @visibleForTesting EntryValuesBloc<T>? entryValuesBloc,
+  }) : entryValuesBloc =
+            entryValuesBloc ?? EntryValuesBloc<T>(initialValues: initialValues);
   final List<T> initialValues;
   final ExpandableBoxDrawingTableConfigurationData configuration;
   final List<Section<T>> sections;
   final void Function(List<T>)? onValuesChanged;
+  final EntryValuesBloc<T> entryValuesBloc;
 
   @override
   Widget build(BuildContext context) {
     return ExpandableBoxDrawingTableConfiguration(
       configuration: configuration,
-      child: BlocProvider<EntryValuesBloc<T>>(
-        create: (context) => EntryValuesBloc(initialValues: initialValues),
+      child: BlocProvider<EntryValuesBloc<T>>.value(
+        value: entryValuesBloc,
         child: BlocListener<EntryValuesBloc<T>, EntryValuesState<T>>(
           listener: (context, state) {
             if (state is EntryValuesUpdated<T>) {
