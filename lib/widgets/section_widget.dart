@@ -34,7 +34,7 @@ class _SectionWidgetState<T> extends State<SectionWidget<T>> {
     return BlocBuilder<EntryValuesBloc<T>, EntryValuesState<T>>(
         builder: (context, state) {
       if (state is EntryValuesUpdated<T>) {
-        final expansionTile = ExpansionTile(
+        return ExpansionTile(
           onExpansionChanged: (value) {
             setState(() {
               isExpanded = value;
@@ -120,10 +120,8 @@ class _SectionWidgetState<T> extends State<SectionWidget<T>> {
                   );
                 }).toList(),
         );
-        return expansionTile;
       } else {
-        throw Exception(
-            "SectionWidgets cannot be built when EntryValuesBloc's state is EntryValuesInitial");
+        return const SizedBox.shrink(key: Key('empty-state'));
       }
     });
   }
