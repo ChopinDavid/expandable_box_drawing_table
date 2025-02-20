@@ -7,7 +7,7 @@
 <a href="https://pub.dev/packages/expandable_box_drawing_table"><img src="https://img.shields.io/pub/v/expandable_box_drawing_table.svg" alt="pub package"></a>
 </p>
 
-`expandable_box_drawing_table` provides a Flutter widget called `ExpandableBoxDrawingTable`. This widget allows users to create a table with expandable sections, where each section can contain multiple subsections. The widget uses [box drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters) to visually represent the structure and hierarchy of the table, making it easier for developers to create and manage complex, nested layouts. Both entries and sections can be checked. When entries are checked, the updated list of selected values can be handled in a callback. Checking sections will either select or unselect all descendent sections and entries, providing a comprehensive way to manage hierarchical data.
+`expandable_box_drawing_table` provides a Flutter widget called `ExpandableBoxDrawingTable`. This widget allows users to create a table with expandable sections, where each section can contain multiple subsections. The widget uses <a href="https://en.wikipedia.org/wiki/Box-drawing_characters" target="_blank">box drawing characters</a> to visually represent the structure and hierarchy of the table, making it easier for developers to create and manage complex, nested layouts. Both entries and sections can be checked. When entries are checked, the updated list of selected values can be handled in a callback. Checking sections will either select or unselect all descendent sections and entries, providing a comprehensive way to manage hierarchical data.
 
 ## Features
 
@@ -20,7 +20,7 @@
 ***For working examples, please refer to the `example` project included in this repository***
 #### Definitions
 As the usage of this package is explained, you will encounter some words that have specific meanings within the context of using this package:
-- `value`: A `value` is any piece of data. They are associated with an `Entry` that will appear at the lowest-level of a hierarchy. Your `ExpandableBoxDrawingTable` is generic and can be passed a type. This type determines the type of the `List` of newly-selected values returned when any data in your table changes.
+- `value`: A `value` is any piece of data. They are associated with an `Entry` that will appear at the lowest-level of a hierarchy. Your `ExpandableBoxDrawingTable` is generic and can be passed a type. This type determines the type of the `List` of newly-selected `value`s returned when any data in your table changes.
 - `Entry`: An `Entry` appears at the lowest-level of a hierarchy in `ExpandableBoxDrawingTable`. They contain an associated `value` that can be handled when their associated `EntryCell` is "selected" (via tapping its `Checkbox`).
 - `Section`: `Section`s are classes that contain either a list of more `Section`s (`Section.subSections`) or a list of `Entry`s (`Section.entries`), but not both. There can be any number of recursively nested `subSections` within a `Section`. All `Section` hierarchies will, in theory, end with a list of `Entry`s (can be an empty list) to be displayed to the user.
 #### Basic Setup
@@ -51,7 +51,7 @@ ExpandableBoxDrawingTable<String>(
   <img src="https://github.com/user-attachments/assets/f6dd6216-42e2-494f-afbb-d682a0b0b4c0" height="500" width="230"/>
 </p>
 
-Let's assume that, in the above example, `sharedPreferences.getStringList('selected_values')` returned `['1.2', '2.1']`. In this case, the `EntryCell`s associated with the `Entry`s with these `'1.1'` and `'2.1'` values would be initially "selected", i.e. their checkbox will initially be checked.
+Let's assume that, in the above example, `sharedPreferences.getStringList('selected_values')` returned `['1.2', '2.1']`. In this case, the `EntryCell`s associated with the `Entry`s with these `'1.1'` and `'2.1'` `value`s would be initially "selected", i.e. their checkbox will initially be checked.
 
 #### Handling selected data
 This interface would be mostly useless if we didn't provide a means of handling newly-selected data. Luckily, `ExpandableBoxDrawingTable` comes with an `onValuesChanged` callback so that you can handle changes to selected data:
@@ -66,7 +66,7 @@ ExpandableBoxDrawingTable<String>(
 );
 ```
 
-You'll notice that `ExpandableBoxDrawingTable` is generic. This is done in order to avoid needing to type cast handled data. For this reason, whichever values are provided to `initialValues` must be a `List<T>` , where `T` is the same type passed to `ExpandableBoxDrawingTable<T>`. You could omit typing `ExpandableBoxDrawingTable`, but any new values handled in `onValuesChanged` would likely end up needing to be type casted at some point.
+You'll notice that `ExpandableBoxDrawingTable` is generic. This is done in order to avoid needing to type cast handled data. For this reason, whichever `value`s are provided to `initialValues` must be a `List<T>` , where `T` is the same type passed to `ExpandableBoxDrawingTable<T>`. You could omit typing `ExpandableBoxDrawingTable`, but any new `value`s handled in `onValuesChanged` would likely end up needing to be type casted at some point.
 
 #### Customization
 The appearance and behavior of your `ExpandableBoxDrawingTable` can be customized to fit your specific needs. This is done through the use of `ExpandableBoxDrawingTableConfigurationData`:
