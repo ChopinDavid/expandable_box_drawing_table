@@ -108,8 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class _CitiesExpandableBoxDrawingTable extends StatelessWidget {
   const _CitiesExpandableBoxDrawingTable(
-      {super.key,
-      required this.isUsingCustomConfiguration,
+      {required this.isUsingCustomConfiguration,
       required this.sharedPreferences});
   final bool isUsingCustomConfiguration;
   final SharedPreferences sharedPreferences;
@@ -795,8 +794,7 @@ class _CitiesExpandableBoxDrawingTable extends StatelessWidget {
 
 class _NumbersExpandableBoxDrawingTable extends StatelessWidget {
   const _NumbersExpandableBoxDrawingTable(
-      {super.key,
-      required this.isUsingCustomConfiguration,
+      {required this.isUsingCustomConfiguration,
       required this.sharedPreferences});
   final bool isUsingCustomConfiguration;
   final SharedPreferences sharedPreferences;

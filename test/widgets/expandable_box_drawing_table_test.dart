@@ -37,7 +37,6 @@ main() {
             initialValues: [],
             sections: [],
             onValuesChanged: (newValues) {
-              print('onValuesChanged called with: $newValues');
               expect(newValues, expectedNewValues);
               if (!completer.isCompleted) {
                 completer.complete();
@@ -58,8 +57,6 @@ main() {
       await completer.future.timeout(const Duration(seconds: 5), onTimeout: () {
         throw TimeoutException('The test timed out');
       });
-
-      print('Test completed');
     },
   );
 
