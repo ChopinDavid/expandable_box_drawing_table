@@ -3,7 +3,7 @@
 
 <p align="center">
 <a href="https://github.com/ChopinDavid/expandable_box_drawing_table/actions"><img src="https://github.com/ChopinDavid/expandable_box_drawing_table/actions/workflows/dart.yml/badge.svg" alt="build"></a>
-<a href="https://app.codecov.io/gh/ChopinDavid/expandable_box_drawing_table"><img src="https://codecov.io/gh/ChopinDavid/expandable_box_drawing_table/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://app.codecov.io/gh/ChopinDavid/expandable_box_drawing_table"><img src="https://codecov.io/gh/ChopinDavid/expandable_box_drawing_table/branch/main/graph/badge.svg" alt="codecov"></a>
 <a href="https://pub.dev/packages/expandable_box_drawing_table"><img src="https://img.shields.io/pub/v/expandable_box_drawing_table.svg" alt="pub package"></a>
 </p>
 
