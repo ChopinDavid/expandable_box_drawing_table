@@ -1,11 +1,11 @@
-name: Dart
+name: Build, Test, and Push to Codecov
 
 on:
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_test_and_push_to_codecov:
     runs-on: ubuntu-latest
 
     steps:
@@ -85,3 +85,27 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: ChopinDavid/expandable_box_drawing_table
+
+  create_tag_and_release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract version
+        id: extract_version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Create tag
+        run: |
+          git tag -a "v${{ env.VERSION }}" -m "Release version ${{ env.VERSION }}"
+          git push origin "v${{ env.VERSION }}"
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "v${{ env.VERSION }}"
+          release_name: "Release ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
