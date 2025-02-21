@@ -126,6 +126,8 @@ class _CitiesExpandableBoxDrawingTable extends StatelessWidget {
                   entriesHaveCheckBoxes: true,
                   expandedIcon: Icons.catching_pokemon,
                   collapsedIcon: Icons.bubble_chart_outlined,
+                  expandedIconColor: Colors.red,
+                  collapsedIconColor: Colors.lightBlue,
                 )
               : ExpandableBoxDrawingTableConfigurationData
                   .defaultConfiguration(),
@@ -812,6 +814,8 @@ class _NumbersExpandableBoxDrawingTable extends StatelessWidget {
                   entriesHaveCheckBoxes: true,
                   expandedIcon: Icons.catching_pokemon,
                   collapsedIcon: Icons.bubble_chart_outlined,
+                  expandedIconColor: Colors.red,
+                  collapsedIconColor: Colors.lightBlue,
                 )
               : ExpandableBoxDrawingTableConfigurationData
                   .defaultConfiguration(),
