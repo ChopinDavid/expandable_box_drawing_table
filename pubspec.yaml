@@ -1,6 +1,6 @@
 name: expandable_box_drawing_table
 description: "Provides a widget to draw a table with expandable, nestable rows and entries using \"box drawing characters\". Entries are tappable, and the widget handles updated values."
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/ChopinDavid/expandable_box_drawing_table
 
 environment:
