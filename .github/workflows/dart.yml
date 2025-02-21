@@ -1,8 +1,6 @@
 name: Dart
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -15,6 +13,41 @@ jobs:
 
       # Set up the Dart SDK
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - name: Extract current version
+        id: extract_version
+        run: |
+          echo "VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')" >> $GITHUB_ENV
+
+      - name: Check CHANGELOG.md for version header
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          if ! grep -q "## $VERSION" CHANGELOG.md; then
+            echo "CHANGELOG.md does not contain a header for version $VERSION. Failing the build."
+            exit 1
+          fi
+
+      - name: Fetch main branch
+        run: git fetch origin main:main
+
+      - name: Extract main branch version
+        run: |
+          git checkout main
+          MAIN_VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          echo "MAIN_VERSION=$MAIN_VERSION" >> $GITHUB_ENV
+
+      - name: Compare versions
+        run: |
+          git checkout -
+          PR_VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          echo "PR_VERSION=$PR_VERSION" >> $GITHUB_ENV
+          if [ "$PR_VERSION" = "$MAIN_VERSION" ]; then
+            echo "Version $PR_VERSION is not greater than main branch version $MAIN_VERSION. Failing the build."
+            exit 1
+          elif [ "$(printf '%s\n' "$PR_VERSION" "$MAIN_VERSION" | sort -V | head -n1)" = "$PR_VERSION" ]; then
+            echo "Version $PR_VERSION is not greater than main branch version $MAIN_VERSION. Failing the build."
+            exit 1
+          fi
 
       # Install Flutter
       - name: Install Flutter
