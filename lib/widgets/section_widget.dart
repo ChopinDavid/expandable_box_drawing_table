@@ -96,6 +96,11 @@ class _SectionWidgetState<T> extends State<SectionWidget<T>> {
                           .collapsedIcon
                       : ExpandableBoxDrawingTableConfiguration.of(context)
                           .expandedIcon,
+                  color: !isExpanded
+                      ? ExpandableBoxDrawingTableConfiguration.of(context)
+                          .collapsedIconColor
+                      : ExpandableBoxDrawingTableConfiguration.of(context)
+                          .expandedIconColor,
                 ),
               ],
             ),

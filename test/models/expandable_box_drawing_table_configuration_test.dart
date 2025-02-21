@@ -13,6 +13,8 @@ main() {
           entriesHaveCheckBoxes: false,
           expandedIcon: Icons.catching_pokemon,
           collapsedIcon: Icons.bubble_chart_outlined,
+          collapsedIconColor: null,
+          expandedIconColor: null,
         );
 
         ExpandableBoxDrawingTableConfigurationData? actualConfigurationData;
@@ -41,31 +43,48 @@ main() {
     test(
       'default constructor creates an instance with the provided values',
       () {
+        const expectedSectionsHaveCheckBoxes = false;
+        const expectedEntriesHaveCheckBoxes = false;
+        const expectedExpandedIcon = Icons.catching_pokemon;
+        const expectedCollapsedIcon = Icons.bubble_chart_outlined;
+        const expectedExpandedIconColor = Colors.red;
+        const expectedCollapsedIconColor = Colors.blue;
+
         const expectedExpandableBoxDrawingTableConfigurationData =
             ExpandableBoxDrawingTableConfigurationData(
-          sectionsHaveCheckBoxes: false,
-          entriesHaveCheckBoxes: false,
-          expandedIcon: Icons.catching_pokemon,
-          collapsedIcon: Icons.bubble_chart_outlined,
+          sectionsHaveCheckBoxes: expectedSectionsHaveCheckBoxes,
+          entriesHaveCheckBoxes: expectedEntriesHaveCheckBoxes,
+          expandedIcon: expectedExpandedIcon,
+          collapsedIcon: expectedCollapsedIcon,
+          expandedIconColor: expectedExpandedIconColor,
+          collapsedIconColor: expectedCollapsedIconColor,
         );
 
         expect(
           expectedExpandableBoxDrawingTableConfigurationData
               .sectionsHaveCheckBoxes,
-          false,
+          expectedSectionsHaveCheckBoxes,
         );
         expect(
           expectedExpandableBoxDrawingTableConfigurationData
               .entriesHaveCheckBoxes,
-          false,
+          expectedEntriesHaveCheckBoxes,
         );
         expect(
           expectedExpandableBoxDrawingTableConfigurationData.expandedIcon,
-          Icons.catching_pokemon,
+          expectedExpandedIcon,
         );
         expect(
           expectedExpandableBoxDrawingTableConfigurationData.collapsedIcon,
-          Icons.bubble_chart_outlined,
+          expectedCollapsedIcon,
+        );
+        expect(
+          expectedExpandableBoxDrawingTableConfigurationData.expandedIconColor,
+          expectedExpandedIconColor,
+        );
+        expect(
+          expectedExpandableBoxDrawingTableConfigurationData.collapsedIconColor,
+          expectedCollapsedIconColor,
         );
       },
     );
@@ -100,21 +119,32 @@ main() {
     test(
       'copyWith method returns a new instance with the provided values',
       () {
+        const expectedSectionsHaveCheckBoxes = false;
+        const expectedEntriesHaveCheckBoxes = false;
+        const expectedExpandedIcon = Icons.catching_pokemon;
+        const expectedCollapsedIcon = Icons.bubble_chart_outlined;
+        const expectedExpandedIconColor = Colors.red;
+        const expectedCollapsedIconColor = Colors.blue;
+
         const expectedExpandableBoxDrawingTableConfigurationData =
             ExpandableBoxDrawingTableConfigurationData(
-          sectionsHaveCheckBoxes: false,
-          entriesHaveCheckBoxes: false,
-          expandedIcon: Icons.catching_pokemon,
-          collapsedIcon: Icons.bubble_chart_outlined,
+          sectionsHaveCheckBoxes: expectedSectionsHaveCheckBoxes,
+          entriesHaveCheckBoxes: expectedEntriesHaveCheckBoxes,
+          expandedIcon: expectedExpandedIcon,
+          collapsedIcon: expectedCollapsedIcon,
+          expandedIconColor: expectedExpandedIconColor,
+          collapsedIconColor: expectedCollapsedIconColor,
         );
 
         final actualExpandableBoxDrawingTableConfigurationData =
             ExpandableBoxDrawingTableConfigurationData.defaultConfiguration()
                 .copyWith(
-          sectionsHaveCheckBoxes: false,
-          entriesHaveCheckBoxes: false,
-          expandedIcon: Icons.catching_pokemon,
-          collapsedIcon: Icons.bubble_chart_outlined,
+          sectionsHaveCheckBoxes: expectedSectionsHaveCheckBoxes,
+          entriesHaveCheckBoxes: expectedEntriesHaveCheckBoxes,
+          expandedIcon: expectedExpandedIcon,
+          collapsedIcon: expectedCollapsedIcon,
+          expandedIconColor: expectedExpandedIconColor,
+          collapsedIconColor: expectedCollapsedIconColor,
         );
 
         expect(
