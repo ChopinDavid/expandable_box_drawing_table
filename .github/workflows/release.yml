@@ -19,9 +19,12 @@ jobs:
           VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Create tag
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
+          echo "${{ env.PAT_TOKEN }}"
           git tag -a "v${{ env.VERSION }}" -m "Release version ${{ env.VERSION }}"
-          git push origin "v${{ env.VERSION }}"
+          git push https://x-access-token:${{ env.PAT_TOKEN }}@github.com/ChopinDavid/expandable_box_drawing_table.git "v${{ env.VERSION }}"
       - name: Create release
         uses: actions/create-release@v1
         env:
