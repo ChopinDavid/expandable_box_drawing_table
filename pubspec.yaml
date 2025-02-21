@@ -1,5 +1,5 @@
 name: expandable_box_drawing_table
-description: "Provides a widget that allows you to draw a table with expandable and recursively nestable rows and entries. The sections and entries are displayed using \"box drawing characters\", allowing users to quickly and easily understand the table's hierarchy. Entries are tappable, and the widget provides a means of handling updated values."
+description: "Provides a widget to draw a table with expandable, nestable rows and entries using \"box drawing characters\". Entries are tappable, and the widget handles updated values."
 version: 1.0.0
 repository: https://github.com/ChopinDavid/expandable_box_drawing_table
 
