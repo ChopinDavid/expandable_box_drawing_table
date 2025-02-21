@@ -66,12 +66,15 @@ main() {
       "shows configuration's collapsed icon when ExpansionTile is collapsed",
       (widgetTester) async {
         const expectedCollapsedIcon = Icons.catching_pokemon;
+        const expectedCollapsedIconColor = Colors.red;
 
         await widgetTester.pumpWidget(
           ExpandableBoxDrawingTableConfiguration(
             configuration: ExpandableBoxDrawingTableConfigurationData
                     .defaultConfiguration()
-                .copyWith(collapsedIcon: expectedCollapsedIcon),
+                .copyWith(
+                    collapsedIcon: expectedCollapsedIcon,
+                    collapsedIconColor: expectedCollapsedIconColor),
             child: MaterialApp(
               home: BlocProvider<EntryValuesBloc<int>>.value(
                 value: mockEntryValuesBloc,
@@ -91,7 +94,10 @@ main() {
 
         await widgetTester.pumpAndSettle();
 
-        expect(find.byIcon(expectedCollapsedIcon), findsOneWidget);
+        final iconFinder = find.byIcon(expectedCollapsedIcon);
+        expect(iconFinder, findsOneWidget);
+        expect(widgetTester.widget<Icon>(iconFinder).color,
+            expectedCollapsedIconColor);
       },
     );
 
@@ -99,12 +105,16 @@ main() {
       "shows configuration's expanded icon when ExpansionTile is expanded",
       (widgetTester) async {
         const expectedExpandedIcon = Icons.bubble_chart_outlined;
+        const expectedExpandedIconColor = Colors.lightBlue;
 
         await widgetTester.pumpWidget(
           ExpandableBoxDrawingTableConfiguration(
             configuration: ExpandableBoxDrawingTableConfigurationData
                     .defaultConfiguration()
-                .copyWith(expandedIcon: expectedExpandedIcon),
+                .copyWith(
+              expandedIcon: expectedExpandedIcon,
+              expandedIconColor: expectedExpandedIconColor,
+            ),
             child: MaterialApp(
               home: BlocProvider<EntryValuesBloc<int>>.value(
                 value: mockEntryValuesBloc,
@@ -127,7 +137,10 @@ main() {
         await widgetTester.tap(find.byType(ExpansionTile));
         await widgetTester.pumpAndSettle();
 
-        expect(find.byIcon(expectedExpandedIcon), findsOneWidget);
+        final iconFinder = find.byIcon(expectedExpandedIcon);
+        expect(iconFinder, findsOneWidget);
+        expect(widgetTester.widget<Icon>(iconFinder).color,
+            expectedExpandedIconColor);
       },
     );
 

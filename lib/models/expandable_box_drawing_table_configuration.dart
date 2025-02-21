@@ -31,6 +31,8 @@ class ExpandableBoxDrawingTableConfigurationData extends Equatable {
     required this.entriesHaveCheckBoxes,
     required this.expandedIcon,
     required this.collapsedIcon,
+    required this.expandedIconColor,
+    required this.collapsedIconColor,
   }) : assert(!(sectionsHaveCheckBoxes && !entriesHaveCheckBoxes),
             'sectionsHaveCheckBoxes cannot be true if entriesHaveCheckBoxes is false');
 
@@ -38,18 +40,24 @@ class ExpandableBoxDrawingTableConfigurationData extends Equatable {
   final bool entriesHaveCheckBoxes;
   final IconData expandedIcon;
   final IconData collapsedIcon;
+  final Color? expandedIconColor;
+  final Color? collapsedIconColor;
 
   const ExpandableBoxDrawingTableConfigurationData.defaultConfiguration()
       : sectionsHaveCheckBoxes = true,
         entriesHaveCheckBoxes = true,
         expandedIcon = Icons.arrow_drop_down,
-        collapsedIcon = Icons.arrow_right;
+        collapsedIcon = Icons.arrow_right,
+        expandedIconColor = null,
+        collapsedIconColor = null;
 
   ExpandableBoxDrawingTableConfigurationData copyWith({
     bool? sectionsHaveCheckBoxes,
     bool? entriesHaveCheckBoxes,
     IconData? expandedIcon,
     IconData? collapsedIcon,
+    Color? expandedIconColor,
+    Color? collapsedIconColor,
   }) {
     return ExpandableBoxDrawingTableConfigurationData(
       sectionsHaveCheckBoxes:
@@ -58,6 +66,8 @@ class ExpandableBoxDrawingTableConfigurationData extends Equatable {
           entriesHaveCheckBoxes ?? this.entriesHaveCheckBoxes,
       expandedIcon: expandedIcon ?? this.expandedIcon,
       collapsedIcon: collapsedIcon ?? this.collapsedIcon,
+      expandedIconColor: expandedIconColor,
+      collapsedIconColor: collapsedIconColor,
     );
   }
 
@@ -67,5 +77,7 @@ class ExpandableBoxDrawingTableConfigurationData extends Equatable {
         entriesHaveCheckBoxes,
         expandedIcon,
         collapsedIcon,
+        expandedIconColor,
+        collapsedIconColor,
       ];
 }
