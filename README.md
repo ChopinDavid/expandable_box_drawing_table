@@ -9,9 +9,7 @@
 
 `expandable_box_drawing_table` provides a Flutter widget called `ExpandableBoxDrawingTable`. This widget allows users to create a table with expandable sections, where each section can contain multiple subsections. The widget uses <a href="https://en.wikipedia.org/wiki/Box-drawing_characters" target="_blank">box drawing characters</a> to visually represent the structure and hierarchy of the table, making it easier for developers to create and manage complex, nested layouts. Both entries and sections can be checked. When entries are checked, the updated list of selected values can be handled in a callback. Checking sections will either select or unselect all descendent sections and entries, providing a comprehensive way to manage hierarchical data.
 
-<p align="center">
-  <img src="[https://github.com/user-attachments/assets/cf6f29f7-d2f9-4e0a-93fc-6752db340604](https://github.com/user-attachments/assets/002ce2f8-96ba-4047-8013-047f9620b7c1)" height="500" width="434"/>
-</p>
+![DEMO](misc/demo.gif)
 
 ## Features
 
