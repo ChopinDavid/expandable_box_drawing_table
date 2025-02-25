@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Updated README
+
 ## 1.0.1
 
 * Added means of specifying expanded and collapsed icon colors in configuration
